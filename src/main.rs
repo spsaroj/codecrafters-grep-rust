@@ -8,6 +8,9 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
     } else if pattern.starts_with("\\d") {
         return input_line.contains(|c:char| c.is_numeric());
     }
+    else if pattern.starts_with("\\w") {
+        return input_line.contains(|c:char| c.is_numeric() || c.is_alphabetic() || c == '_');
+    }
     else {
         panic!("Unhandled pattern: {}", pattern)
     }
