@@ -13,7 +13,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
         p if p.chars().count()>2 && p.starts_with("[") && p.ends_with("]") =>
             return input_line.contains(|c:char| p[1..p.len() - 1].contains(c)),
         p if p.chars().count()>2 && p.starts_with("[^") && p.ends_with("]") =>
-            return input_line.contains(|c:char| !p[1..p.len() - 1].contains(c)),
+            return !input_line.contains(|c:char| p[1..p.len() - 1].contains(c)),
         _ => panic!("Unhandled pattern: {}", pattern),
     }
 }
