@@ -6,7 +6,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
     if pattern.chars().count() == 1 {
         return input_line.contains(pattern);
     } else if pattern.chars().count()>2 && pattern.starts_with("[") && pattern.ends_with("]") {
-        return input_line.contains(|c:char| pattern[1..pattern.length() - 1].contains(c));
+        return input_line.contains(|c:char| pattern[1..pattern.len() - 1].contains(c));
     }
     else {
         panic!("Unhandled pattern: {}", pattern)
