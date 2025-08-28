@@ -12,7 +12,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
             return input_line.contains(|c:char| c.is_numeric() || c.is_alphabetic() || c == '_'),
         p if p.chars().count()>2 && p.starts_with("[") && p.ends_with("]") =>
             return input_line.contains(|c:char| p[1..p.len() - 1].contains(c)),
-        _ => panic!("Unhandled pattern: {}", p),
+        _ => panic!("Unhandled pattern: {}", pattern),
     }
 }
 
