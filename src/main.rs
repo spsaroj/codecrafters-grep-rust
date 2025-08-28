@@ -4,15 +4,15 @@ use std::process;
 
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
     match pattern {
-        p if pattern.chars().count() == 1 =>
-            return input_line.contains(pattern),
-        p if pattern.starts_with("\\d") =>
+        p if p.chars().count() == 1 =>
+            return input_line.contains(p),
+        p if p.starts_with("\\d") =>
             return input_line.contains(|c:char| c.is_numeric()),
-        p if pattern.starts_with("\\w") =>
+        p if p.starts_with("\\w") =>
             return input_line.contains(|c:char| c.is_numeric() || c.is_alphabetic() || c == '_'),
-        p if pattern.chars().count()>2 && pattern.starts_with("[") && pattern.ends_with("]") =>
-            return input_line.contains(|c:char| pattern[1..pattern.len() - 1].contains(c)),
-        _ => panic!("Unhandled pattern: {}", pattern),
+        p if p.chars().count()>2 && p.starts_with("[") && p.ends_with("]") =>
+            return input_line.contains(|c:char| p[1..p.len() - 1].contains(c)),
+        _ => panic!("Unhandled pattern: {}", p),
     }
 }
 
