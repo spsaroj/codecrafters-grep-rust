@@ -5,11 +5,8 @@ use std::process;
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
     if pattern.chars().count() == 1 {
         return input_line.contains(pattern);
-    } else if pattern.starts_with("\\d") {
-        return input_line.contains(|c:char| c.is_numeric());
-    }
-    else if pattern.starts_with("\\w") {
-        return input_line.contains(|c:char| c.is_numeric() || c.is_alphabetic() || c == '_');
+    } else if pattern.chars().count()>2 && pattern.starts_with("[") && pattern.ends_with("]") {
+        return input_line.contains(|c:char| pattern[1..pattern.length() - 1].contains(c));
     }
     else {
         panic!("Unhandled pattern: {}", pattern)
